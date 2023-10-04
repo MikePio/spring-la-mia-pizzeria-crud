@@ -6,7 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-// * FASE 3 CREARE LA TABELLA
+// * FASE 3 CREARE LA TABELLA NEL DATABASE
+// * eseguire il programma e controllare se è stata creata la tabella nel db (DBeaver, MariaDB, PHPMyAdmin...)
 @Entity
 public class Pizza {
   
@@ -81,7 +82,7 @@ public class Pizza {
 
   @Override
   public String toString() {
-		return "Id: " + getId() + "\n" + "Name: " + getName() + "\n" + "Description: " + getDescription() + "\n" + "Image path: " + getPrice() + "\n" + "Price: " + getPrice() + "\n";
+		return "Id: " + getId() + "\n" + "Name: " + getName() + "\n" + "Description: " + getDescription() + "\n" + "Image path: " + getPrice() + "\n" + "Price: " + getFormattedPrice() + "\n";
   }
 
 }
