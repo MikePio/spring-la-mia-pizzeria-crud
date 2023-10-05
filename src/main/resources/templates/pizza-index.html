@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Pizzas</title>
+<style>
+	body{
+		background-color: #303030;
+		color: white;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	h1{
+		color: #4548FF;
+
+	}
+
+</style>
+</head>
+<body>
+
+  <h1>Pizzas</h1>
+
+  <h2 th:if="${pizzas.size() == 0}">
+    Nessuna pizza inserita!
+  </h2>
+  
+	<ul>
+		<li
+			th:each="pizza : ${pizzas}"
+			th:object="${pizza}"
+		>
+			<a th:href="@{/pizzas/{id}(id=*{id})}">
+        [[*{name}]] - [[*{price}]]
+			</a>
+		</li>
+	</ul>
+
+</body>
+</html>
