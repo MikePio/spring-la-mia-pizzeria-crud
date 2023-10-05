@@ -22,6 +22,18 @@ public class PizzaController {
   @Autowired
   private PizzaService pizzaService;
 
+  @GetMapping("/")
+  public String getHome(Model model) {
+
+    return "home";
+    
+    // List<Pizza> pizzas = pizzaService.findAll();
+    // model.addAttribute("pizzas", pizzas);
+    
+    // * per far mostrare l'indice delle pizze anche quando l'url è "/"
+    // return "pizza-index";
+  }
+
   @GetMapping("/pizzas")
   public String getIndex(Model model) {
 
@@ -38,5 +50,11 @@ public class PizzaController {
     model.addAttribute("pizza", pizza);
 
     return "pizza-show";
+  }
+
+  @GetMapping("/credits")
+  public String credits(Model model){
+
+    return "credits";
   }
 }

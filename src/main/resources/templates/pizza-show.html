@@ -1,27 +1,31 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Pizzas</title>
-<style>
-	body{
-		background-color: #303030;
-		color: white;
-		font-family: Arial, Helvetica, sans-serif;
-	}
+<!-- head -->
+<th:block th:replace="../templates/frags/head :: head"></th:block>
 
-	h1{
-		color: #4548FF;
+<body th:object="${pizza}" class="d-flex flex-column justify-content-between">
 
-	}
+	<!-- header -->
+	<th:block th:replace="../templates/frags/header :: header"></th:block>
 
-</style>
-</head>
-<body th:object="${pizza}">
-  [[*{name}]] 
-  <br> [[*{description}]]	
-  <br> [[*{price}]] 
-  <br> [[*{photo}]]
+	<main class="py-5 d-flex flex-column justify-content-center align-items-center">
+
+		[[*{name}]]
+		<br> [[*{description}]]
+		<br> [[*{price}]]
+		<br> [[*{photo}]]
+
+		<!-- link di tutte le pagine -->
+		<!-- soluzione 1 -->
+		<th:block th:replace="../templates/frags/links :: links"></th:block>
+		<!-- soluzione 2 -->
+		<!-- <th:block th:replace="~{../templates/frags/links :: links}"></th:block> -->
+		<!-- soluzione 3 -->
+		<!-- <th:block th:replace="~{frags/links :: links}"></th:block> -->
+
+	</main>
+
+	<!-- footer -->
+	<th:block th:replace="../templates/frags/footer :: footer"></th:block>
 
 </body>
+
 </html>

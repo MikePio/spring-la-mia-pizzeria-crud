@@ -26,3 +26,15 @@ Implementiamo  quindi il **controller** con il metodo `index` che restituisce un
 > Testare anche questa eventualita' commentando gli inserimenti nel `CommandLineRunner`.
 
 Gestiamo i componenti riutilizzabili con i `fragments`.
+
+## `Day 2 - Show + Filter`
+
+Lo scopo di oggi è quello di mostrare i dettagli di una singola pizza.
+
+Ogni pizza dell’elenco avrà quindi un pulsante che se cliccato ci porterà a una pagina che mostrerà i dettagli della pizza scelta.
+
+Dobbiamo quindi inviare l’`id` come parametro dell’`URL`, recuperarlo nel metodo del `controller`, caricare i dati della **pizza ricercata** e passarli come `model`.
+
+La `view` a quel punto li mostrerà all’utente con la grafica che preferiamo.
+
+Nella pagina con l’elenco delle pizze aggiungiamo un campo di testo che se compilato filtrerà le pizze (**lato server**) aventi come `titolo` quello inserito dall’utente.
