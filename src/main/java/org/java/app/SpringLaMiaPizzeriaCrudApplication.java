@@ -24,10 +24,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		// String name, String description, String photo, float price
-		Pizza margherita = new Pizza("Margherita", "Pomodoro e mozzarella", "/imgs/margherita.jpg", 5.00f);
-		Pizza cotto = new Pizza("Prosciutto Cotto", "Pomodoro, mozzarella e prosciutto cotto", "/imgs/prosciutto-cotto.jpg", 6.50f);
-		Pizza diavola = new Pizza("Diavola", "Pomodoro, mozzarella e salame piccante", "/imgs/diavola.jpg", 7.00f);
+		Pizza margherita = new Pizza("Margherita", "Pomodoro e mozzarella", "margherita.jpg", 5.00f);
+		Pizza cotto = new Pizza("Prosciutto Cotto", "Pomodoro, mozzarella e prosciutto cotto", "cotto.jpg", 6.50f);
+		Pizza diavola = new Pizza("Diavola", "Pomodoro, mozzarella e salame piccante", "diavola.jpg", 7.00f);
 	
 		pizzaService.save(margherita);
 		pizzaService.save(cotto);

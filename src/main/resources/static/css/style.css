@@ -39,9 +39,20 @@ header a, .def-link {
 
 /* main */
 main{
-  min-height: calc(100vh - 230px);
+  /* 100vh - altezza nav-bar - altezza footer */
+  /* min-height: calc(100vh - 230px); */
+  
+  /* 100vh - altezza nav-bar - altezza footer */
+  /* min-height: calc(100vh - 260px); */
+  /* 100vh - altezza nav-bar - altezza footer - altezza all-links 30px - margin-top di all-links 1rem=16px */
+  min-height: calc(100vh - 276px);
 }
 
 main img{
   width: 60%;
+}
+
+/* all-links */
+.all-links{
+  height: 30px;
 }
