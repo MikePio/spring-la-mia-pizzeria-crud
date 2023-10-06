@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 // * STEP 7 creare le rotte per mostrare nelle view i dati
 // scrivere @Controller
@@ -22,7 +23,8 @@ public class PizzaController {
   @Autowired
   private PizzaService pizzaService;
 
-  @GetMapping("/")
+  // @GetMapping("/")
+  @GetMapping
   public String getHome(Model model) {
 
     return "home";
@@ -35,9 +37,30 @@ public class PizzaController {
   }
 
   @GetMapping("/pizzas")
-  public String getIndex(Model model) {
+  public String getIndex(Model model, @RequestParam(required = false) String pizzaName) {
+    
+    // senza ricerca
+    // List<Pizza> pizzas = pizzaService.findAll();
+    // model.addAttribute("pizzas", pizzas);
 
-    List<Pizza> pizzas = pizzaService.findAll();
+    // sintassi estesa
+    // if(pizzaName == null){
+      
+    //   List<Pizza> pizzas = pizzaService.findAll();
+    //   model.addAttribute("pizzas", pizzas);
+    // }else{
+      
+    //   // * findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
+    //   List<Pizza> pizzas = pizzaService.findByName(pizzaName);
+    //   model.addAttribute("pizzas", pizzas);
+    // }
+
+    // sintassi con il ternario
+    List<Pizza> pizzas = pizzaName == null
+                      ? pizzaService.findAll()
+    // * findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
+                      : pizzaService.findByName(pizzaName);
+                      
     model.addAttribute("pizzas", pizzas);
 
     return "pizza-index";

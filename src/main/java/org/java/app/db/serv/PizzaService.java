@@ -26,4 +26,11 @@ public class PizzaService {
 	public Pizza findById(int id) {
 		return pizzaRepo.findById(id).get();
 	}
+	
+  // findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
+	public List<Pizza> findByName(String PizzaName){
+		
+		// findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
+		return pizzaRepo.findByName(PizzaName);
+	}
 }

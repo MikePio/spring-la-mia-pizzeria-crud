@@ -28,8 +28,12 @@ header a, .def-link {
   height: 80px;
 }
 
+.search-bar{
+  width: 38% !important;
+}
+
 .btn-nav{
-  min-width: 80px;
+  min-width: 60px;
   height: 30px;
 }
 
