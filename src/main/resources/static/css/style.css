@@ -56,3 +56,28 @@ main img{
 .all-links{
   height: 30px;
 }
+
+/* pagina index */
+.img-item-index-page{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+}
+
+/* pagina di dettaglio */
+.img-show-page{
+  
+  width: 35%;
+}
+
+@media (max-width: 769px) {
+  .img-show-page {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 426px) {
+  .img-show-page {
+    width: 75% !important;
+  }
+}
