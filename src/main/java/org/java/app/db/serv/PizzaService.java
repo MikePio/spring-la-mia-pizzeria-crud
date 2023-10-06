@@ -28,9 +28,17 @@ public class PizzaService {
 	}
 	
   // findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
-	public List<Pizza> findByName(String PizzaName){
+	// public List<Pizza> findByName(String PizzaName){
 		
-		// findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
-		return pizzaRepo.findByName(PizzaName);
+		// * trova il nome della pizza con la stessa parola usata per il nome della pizza (parola cercata: "diavola" trovata la pizza "diavola")
+		// 	return pizzaRepo.findByName(PizzaName);
+	// }
+		
+	// * findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
+	public List<Pizza> findByName(String string){
+		
+		// ! STEP 2 PER CERCARE UN OGGETTO NEL FORM
+		// * trova il nome della pizza con le lettere che sono incluse nel nome della pizza (parola cercata: "vola" trovata la pizza "diavola")
+		return pizzaRepo.findByNameContaining(string);
 	}
 }

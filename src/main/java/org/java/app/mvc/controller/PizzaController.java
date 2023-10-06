@@ -35,9 +35,16 @@ public class PizzaController {
     // * per far mostrare l'indice delle pizze anche quando l'url è "/"
     // return "pizza-index";
   }
-
+  
+  
+  // ! STEP 3(FINALE) PER CERCARE UN OGGETTO TRAMITE FORM
+  // AGGIUNGERE , @RequestParam(required = false) String pizzaName
+  // AGGIUNGERE IN   @GetMapping("/pizzas") le successive 2 righe in basso ↓
+  // List<Pizza> pizzas = pizzaName == null ? pizzaService.findAll() : pizzaService.findByName(pizzaName);                  
+  // model.addAttribute("pizzas", pizzas);
   @GetMapping("/pizzas")
-  public String getIndex(Model model, @RequestParam(required = false) String pizzaName) {
+  public String getIndex(Model model, @RequestParam(required = false) String pizzaName) {   // * STEP 3(FINALE) parte 1 PER CERCARE UN OGGETTO TRAMITE FORM
+
     
     // senza ricerca
     // List<Pizza> pizzas = pizzaService.findAll();
@@ -55,13 +62,14 @@ public class PizzaController {
     //   model.addAttribute("pizzas", pizzas);
     // }
 
-    // sintassi con il ternario
-    List<Pizza> pizzas = pizzaName == null
-                      ? pizzaService.findAll()
-    // * findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
-                      : pizzaService.findByName(pizzaName);
-                      
-    model.addAttribute("pizzas", pizzas);
+      // * STEP 3(FINALE) parte 2 PER CERCARE UN OGGETTO TRAMITE FORM
+      // sintassi con il ternario  
+      List<Pizza> pizzas = pizzaName == null
+                        ? pizzaService.findAll()
+      // * findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
+                        : pizzaService.findByName(pizzaName);
+                        
+      model.addAttribute("pizzas", pizzas);
 
     return "pizza-index";
   }

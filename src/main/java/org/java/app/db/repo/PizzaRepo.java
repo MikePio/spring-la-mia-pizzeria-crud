@@ -9,5 +9,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PizzaRepo extends JpaRepository<Pizza, Integer> {
   // findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
-  public List<Pizza> findByName(String pizzaName);
+  // public List<Pizza> findByName(String pizzaName);
+  
+  // ! STEP 1 PER CERCARE UN OGGETTO NEL FORM
+  // * findByName perché il campo salvato nel db è name (se invece fosse stato title allora findByTitle)
+  // * trova il nome della pizza con le lettere che sono incluse nel nome della pizza (parola cercata: "vola" trovata la pizza "diavola")
+  public List<Pizza> findByNameContaining(String string);
 }
