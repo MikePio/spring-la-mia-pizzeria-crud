@@ -30,6 +30,7 @@ header a, .def-link {
 
 .search-bar{
   width: 38% !important;
+  height: 30px !important;
 }
 
 .btn-nav{

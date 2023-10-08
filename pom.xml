@@ -18,7 +18,7 @@
 	</properties>
 	<dependencies>
 
-<!-- Step 1 - per connettere il db con il progetto: inserire queste dipendenze -->
+<!-- Step 1 - inizializzazione progetto - per connettere il db con il progetto, inserire queste dipendenze -->
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-data-jpa</artifactId>

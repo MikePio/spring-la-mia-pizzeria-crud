@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-// * STEP 7 creare le rotte per mostrare nelle view i dati
+// * STEP 7 - inizializzazione progetto - creare le rotte per mostrare nelle view i dati
 // scrivere @Controller
 // scrivere @Autowired private PizzaService pizzaService;
 // creare le rotte index e show
@@ -87,5 +87,12 @@ public class PizzaController {
   public String credits(Model model){
 
     return "credits";
+  }
+
+  // * step 2 - Validazione errori - creare la rotta del create e la view(/file.html) 
+  @GetMapping("/pizza-create")
+  public String getCreateForm(){
+    
+    return "pizza-create";
   }
 }
