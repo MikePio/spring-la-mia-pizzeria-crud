@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -91,8 +93,17 @@ public class PizzaController {
 
   // * step 2 - Validazione errori - creare la rotta del create e la view(/file.html) 
   @GetMapping("/pizza-create")
-  public String getCreateForm(){
+  public String getCreateForm(Model model){
     
+    model.addAttribute("pizza", new Pizza());
+
     return "pizza-create";
+  }
+  @PostMapping("/pizza-create")
+  public String store(@ModelAttribute Pizza pizza) {
+
+    System.out.println("\nAdded new pizza:\n" + pizza);
+
+    return "redirect:/pizzas";
   }
 }
