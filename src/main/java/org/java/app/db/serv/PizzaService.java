@@ -41,4 +41,10 @@ public class PizzaService {
 		// * trova il nome della pizza con le lettere che sono incluse nel nome della pizza (parola cercata: "vola" trovata la pizza "diavola")
 		return pizzaRepo.findByNameContaining(string);
 	}
+	
+	// * DELETE - STEP 1 - aggiungere in PizzaService il metodo per l'eliminazione da importare nel controller
+	public void deletePizza(Pizza pizza) {
+
+		pizzaRepo.delete(pizza);
+	}
 }

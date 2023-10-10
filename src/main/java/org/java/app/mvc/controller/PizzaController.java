@@ -178,6 +178,14 @@ public class PizzaController {
     
     return "redirect:/pizzas";
   }
-  
-  
+  // * DELETE - STEP 2 - implementare nel controller il metodo delete di PizzaService il metodo e creare il form per l'eliminazione 
+	@PostMapping("/pizzas/delete/{id}")
+	public String deletePizza(@PathVariable int id) {
+		
+		Pizza pizza = pizzaService.findById(id);
+		pizzaService.deletePizza(pizza);
+		
+		return "redirect:/pizzas";
+	}
+
 }
