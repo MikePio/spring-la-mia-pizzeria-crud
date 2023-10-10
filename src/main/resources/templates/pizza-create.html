@@ -23,6 +23,10 @@
           <div th:if="${#fields.hasErrors('name')}">
             <div th:each="err : ${#fields.errors('name')}" th:text="${err}" class="text-danger my-2 text-start"></div>
           </div>
+          <!-- messaggio di errore nel caso in cui il nome doveesse essere duplicato -->
+          <div th:if="${name_unique}">
+            <div class="text-danger my-2 text-start">[[${name_unique}]]</div>
+          </div>
         </div>
 
         <div class="mb-3 text-start" style="width: 150vh; max-width: 73vw;">

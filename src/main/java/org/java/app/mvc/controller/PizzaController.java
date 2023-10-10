@@ -5,10 +5,14 @@ import java.util.List;
 import org.java.app.db.pojo.Pizza;
 import org.java.app.db.serv.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomNumberEditor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -104,11 +108,11 @@ public class PizzaController {
   }
   // * step 4 - Validazione errori - aggiungere @Valid e BindingResult bindingResult per stampare gli errori
   @PostMapping("/pizza-create") // reindirizzamento al click del button submit nel create
-  public String store(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult) {
+  public String store(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
     
     System.out.println("\nAdded new pizza:\n" + pizza);
 
-    // Validazione e stampa errori
+    // Validazione e stampa errori per il create
     if(bindingResult.hasErrors()){
       System.out.println("Error: ");
       bindingResult.getAllErrors().forEach(System.out::println);
@@ -118,6 +122,62 @@ public class PizzaController {
       System.out.println("No error\n");
     }
 
+    // * step ultimo step - creazione oggetto/Validazione errori - salvataggio dell'oggetto nel db
+    try {
+			pizzaService.save(pizza);
+		} catch (DataIntegrityViolationException e) {
+			
+			// CONSTRAIN VALIDATION (unique)
+			System.out.println("Error: " + e.getClass().getSimpleName());
+			
+			model.addAttribute("name_unique", "The name must be unique");
+			
+			return "pizza-create";
+		}
+
     return "redirect:/pizzas";
   }
+
+  // * EDIT - STEP 1 - controller + link nell'index e nella show + creazione pizza-update.html(view)
+  @GetMapping("/pizzas/update/{id}")
+  public String getPizzaUpdate(@PathVariable int id, Model model){
+
+    Pizza pizza = pizzaService.findById(id);
+		model.addAttribute("pizza", pizza);
+
+    return "pizza-update";
+  }
+  // * EDIT - STEP 3 - aggiungere il post mapping 
+  @PostMapping("/pizzas/update/{id}")
+  public String updatePizza(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model){
+
+    System.out.println("\nUpdate pizza:\n" + pizza);
+
+    // Validazione e stampa errori per l'edit
+    if(bindingResult.hasErrors()){
+      System.out.println("Error: ");
+      bindingResult.getAllErrors().forEach(System.out::println);
+
+      return "pizza-update";
+    }else{
+      System.out.println("No error\n");
+    }
+
+    // * EDIT - (ULTIMO) STEP 4 - salvataggio dell'oggetto nel db
+    try {
+			pizzaService.save(pizza);
+		} catch (DataIntegrityViolationException e) {
+			
+			// CONSTRAIN VALIDATION (unique)
+			System.out.println("Error: " + e.getClass().getSimpleName());
+			
+			model.addAttribute("name_unique", "The name must be unique. There is already a pizza called this way");
+			
+			return "pizza-update";
+		}
+    
+    return "redirect:/pizzas";
+  }
+  
+  
 }
