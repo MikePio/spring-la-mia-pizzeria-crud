@@ -53,6 +53,10 @@ main img{
   width: 60%;
 }
 
+.fw-custom{
+  font-weight: 500;
+}
+
 /* all-links */
 .all-links{
   height: 30px;

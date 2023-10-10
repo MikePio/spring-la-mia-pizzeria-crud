@@ -41,7 +41,9 @@
 										<div class="d-flex ">
 											<span class="text-black me-3">€ [[*{formattedPrice}]]</span>
 											<a th:href="@{/pizzas/{id}(id=*{id})}"
-												class="btn-nav btn btn-primary text-white def-link d-flex align-items-center justify-content-center">Details</a>
+												class="btn-nav btn btn-primary fw-custom text-white def-link d-flex align-items-center justify-content-center me-2">Details</a>
+											<a th:href="@{/pizzas/{id}(id=*{id})}"
+												class="btn-nav btn btn-warning fw-custom text-white def-link d-flex align-items-center justify-content-center">Edit</a>
 										</div>
 									</div>
 								</a>
